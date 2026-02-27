@@ -1,0 +1,22 @@
+{
+  "name": "Pop up google map",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "description": "When clicking the address in the website, the google map will pop up",
+  "permissions": ["storage"],
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "exclude_matches": [
+      "*://www.youtube.com/*",
+      "*://www.youtube.com/*",
+      "*://www.google.com/search*",
+      "*://www.google.co.jp/search*",
+      "*://chat.openai.com/*",
+      "https://chatgpt.com/*"
+    ],
+    "js": [
+      "content.js"
+    ],
+    "type": "module"
+  }]
+}
