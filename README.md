@@ -3,4 +3,4 @@
 でmapsフォルダを読み込んでください
 
 ## Demo
-https://docs.google.com/presentation/d/1uVr59mahwf3xTrPJPh-eGZ-YFghic4-fhgrPOhSTplM/edit?usp=sharing
+https://docs.google.com/presentation/d/1uVr59mahwf3xTrPJPh-eGZ-YFghic4-fhgrPOhSTplM/edit?slide=id.g3c4642b03e5_0_45#slide=id.g3c4642b03e5_0_45
