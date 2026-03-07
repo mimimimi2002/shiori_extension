@@ -2,7 +2,6 @@ let mapIframe = null;
 let mapContainer = null;
 
 window.onload = function() {
-
   async function init() {
     await showPlaceNamesToMap();
   }
@@ -39,6 +38,7 @@ window.onload = function() {
       await deleteFromPlaceNameList(data.placeName);
     }
   });
+
 
   // 場所の名前ををリストから削除
   async function deleteFromPlaceNameList(placeName) {
@@ -133,6 +133,19 @@ window.onload = function() {
       shrinkMapButton.style.padding = '5px 10px';
       shrinkMapButton.style.cursor = 'pointer';
 
+      // 場所追加ボタン
+      const addPlaceButton = document.createElement('button');
+      addPlaceButton.textContent = "場所追加🔍";
+      addPlaceButton.style.color = "black";
+      addPlaceButton.style.position = 'absolute';
+      addPlaceButton.style.bottom = '0px';
+      addPlaceButton.style.right = '120px';
+      addPlaceButton.style.backgroundColor = "orange";
+      addPlaceButton.style.border = 'none';
+      addPlaceButton.style.padding = '5px 10px';
+      addPlaceButton.style.cursor = 'pointer';
+      addPlaceButton.id = 'addPlaceButtonID';
+
       // しおり作るボタン
       const shioriButton = document.createElement('button');
       shioriButton.textContent = "しおりを作る";
@@ -144,6 +157,7 @@ window.onload = function() {
       shioriButton.style.border = 'none';
       shioriButton.style.padding = '5px 10px';
       shioriButton.style.cursor = 'pointer';
+      shioriButton.id = 'shioriButtonID';
 
       // 「地図の表示」ボタン作成
       const showMapIcon = document.createElement('div');
@@ -184,10 +198,22 @@ window.onload = function() {
         window.top.location.href = `http://mikimiki.site/shiori/?placeNames=${query}`;
       });
 
+      // 場所検索処理
+      addPlaceButton.addEventListener('click', async function() {
+        const placeName = prompt("追加する場所の名前を記入してください");
+
+        if (!placeName) return;
+        addPlaceNameToList(placeName);
+        addPlaceNameToMap(placeName);
+      });
+
       // コンテナに追加
       mapContainer.appendChild(mapIframe);
       mapContainer.appendChild(shrinkMapButton);
-      mapContainer.appendChild(shioriButton);
+      if (window.location.hostname !== "mikimiki.site") {
+        mapContainer.appendChild(addPlaceButton);
+        mapContainer.appendChild(shioriButton);
+      }
       mapContainer.appendChild(deleteMapButton);
       document.body.appendChild(showMapIcon);
       document.body.appendChild(mapContainer);
